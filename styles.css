@@ -1,0 +1,232 @@
+@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;800;900&display=swap);
+
+* {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+/* Aspectos Principais */
+main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+}
+
+header,
+footer {
+    height: 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+div.container {
+    min-height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+*.hidden {
+    display: none !important;
+}
+
+/* Aspectos Principais -- Especificidades */
+header {
+    justify-content: space-between;
+    padding: 0px 40px;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+footer {
+    font-size: 18px;
+}
+
+
+/* Botoes */
+button {
+    height: 80px;
+    width: 250px;
+    margin-top: 10px;
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background-color: transparent;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    transition: 0.4s all ease;
+    cursor: pointer;
+}
+
+/* Aspectos Específicos */
+.cadastro--box {
+    min-height: 80vh;
+    width: 80%;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+/* Participante */
+.participante--label {
+    margin-top: 40px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.participante--input {
+    width: 80%;
+    height: 50px;
+    border: none;
+    border-bottom: 1px solid black;
+    margin-bottom: 40px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: light;
+}
+
+/* Avaliador */
+.avaliador--select {
+    background-color: white;
+    border: 1px solid black;
+    width: 80%;
+    height: 50px;
+    text-align: center;
+    margin-bottom: 40px;
+    border-radius: 16px;
+    font-size: 18px;
+}
+
+.avaliador--select:hover {
+    cursor: pointer;
+}
+
+/* Tela de testagem */
+.testagem--main {
+    flex: 1;
+    flex-direction: column;
+    text-align: center;
+}
+
+.timer {
+    margin-top: 20px;
+    height: 100px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    flex-direction: column;
+    font-weight: 600;
+}
+
+.timer p {
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.controladores {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+}
+
+/* Botões de Testagem */
+button.direcao {
+    margin: 40px;
+    flex: 1;
+    height: 600px;
+    font-size: 36px;
+    font-weight: 300;
+    border: 1px solid black;
+}
+
+button.direcao:hover {
+    transform: none;
+}
+
+button.direcao:active {
+    transform: none;
+}
+
+.focus {
+    background-color: #D0342C;
+    color: #fff;
+    box-shadow: rgba(50, 50, 93, 0.5) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.6) 0px 18px 36px -18px inset;
+}
+
+.cronometro>span {
+    font-size: 24px;
+}
+
+/* Tela de Resultado */
+.resultado--main {
+    flex: 1;
+    flex-direction: column;
+    min-height: 100%;
+    text-align: center;
+}
+
+.resultado--main h2{
+    margin-top: 40px;
+}
+
+.resultBoxes,
+.filtros {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.resultBox {
+    margin: 20px;
+}
+
+.resultBox>fieldset {
+    border: 1px solid black;
+    padding: 20px;
+    text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+tr:nth-child(even) {
+    background-color: #111;
+    color: #fff;
+}
+
+td, th{
+    padding: 20px;
+}
+
+td.significante {
+    color: #D0342C;
+}
+
+.filtros>button{
+    margin: 20px;
+}
+
+.dadosGerais{
+    margin: 20px;
+    line-height: 2.5;
+}

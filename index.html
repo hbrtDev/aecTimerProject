@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto Gotti - Interações sociais</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="./html2pdf.bundle.min.js"></script>
+</head>
+
+<body>
+    <main>
+        <!-- Header -->
+        <header class="hidden">
+            <div class="avaliador--header"></div>
+            <div class="participante--header"></div>
+        </header>
+
+        <!-- Containers -->
+        <div class="container cadastro--main">
+            <div class="cadastro--box">
+                <h1>Pesquisa Interações Sociais</h1>
+
+                <label for="input" class="participante--label">Nome do Participante:</label>
+                <input type="text" class="participante--input" placeholder="Insira o nome do participante aqui">
+
+                <label for="select" class="avaliador--label">Avaliador(a)</label>
+                <select class="avaliador--select">
+                    <option value="0">Escolhar um Avaliador</option>
+                    <option value="1">Avaliador #1</option>
+                    <option value="2">Avaliador #2</option>
+                    <option value="3">Avaliador #3</option>
+                    <option value="4">HEBERT DOS SANTOS ALMEIDA</option>
+                </select>
+
+                <button class="toTest_btn">Ir para controle de Testagem</button>
+            </div>
+        </div>
+
+        <div class="testagem--main hidden">
+            <div class="timer">
+                <div class="cronometro">08:00:<span>00</span></div>
+                <p>Fase atual: Linha de Base - Minuto 1</p>
+            </div>
+
+            <div class="controladores">
+                <button class="direcao dir--esquerda">Atenção dada à B-1</button>
+                <button class="direcao dir--direita">Atenção dada à C-1</button>
+            </div>
+
+            <button class="startClock_btn">Começar Cronometragem</button>
+            <button class="result hidden" onclick="showResults()">Ir aos Resultados</button>
+        </div>
+
+        <div class="resultado--main container hidden">
+            <h2>Testagem Completa!</h2>
+
+            <div class="dadosGerais">
+                <span class="participante--span">Participante: <b> Placeholder </b></span>
+                <span class="avaliador--span">avaliado por <b>Placeholder </b></span>
+                <br>
+                <span class="totalB1">Total de atenção para B1 (relevante/total): <b class="big--relevante">0</b><span>/0</span></span>
+                <br>
+                <span class="totalC1">Total de atenção para C1 (relevante/total): <b class="big--relevante">0</b><span>/0</span></span>
+            </div>
+
+            <div class="filtros">
+                <button onclick="allResults()">Mostrar todas as interações</button>
+                <button onclick="onlyRelevant()">Mostrar apenas resultados relevantes</button>
+            </div>
+
+            <div class="resultBoxes">
+                <div class="resultBox">
+                    <fieldset class="fieldset--esq">
+                        <legend>Linha de Base - Minuto 1 - B-1</legend>
+                        <legend class="totalAttention_b1">Número total de atenção: <b>0</b></legend>
+                        <legend class="significante--total">Número total de atenção relevante: <b>0</b></legend>
+                        <table>
+                            <tr>
+                                <th>Indíce da atenção</th>
+                                <th>Duração</th>
+                                <th>Duração exata (em MS)</th>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </div>
+
+                <div class="resultBox">
+                    <fieldset class="fieldset--dir">
+                        <legend>Linha de Base - Minuto 1 - C-1</legend>
+                        <legend class="totalAttention_c1">Número total de atenção: <b>0</b></legend>
+                        <legend class="significante--total">Número total de atenção relevante: <b>0</b></legend>
+                        <table>
+                            <tr>
+                                <th>Indíce da atenção</th>
+                                <th>Duração</th>
+                                <th>Duração exata (em MS)</th>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </div>
+            </div>
+
+            <div class="resultBoxes">
+                <div class="resultBox">
+                    <fieldset class="fieldset--esq">
+                        <legend>Linha de Base - Minuto 2 - B-1</legend>
+                        <legend class="totalAttention_b1">Número total de atenção: <b>0</b></legend>
+                        <legend class="significante--total">Número total de atenção relevante: <b>0</b></legend>
+                        <table>
+                            <tr>
+                                <th>Indíce da atenção</th>
+                                <th>Duração</th>
+                                <th>Duração exata (em MS)</th>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </div>
+
+                <div class="resultBox">
+                    <fieldset class="fieldset--dir">
+                        <legend>Linha de Base - Minuto 2 - C-1</legend>
+                        <legend class="totalAttention_c1">Número total de atenção: <b>0</b></legend>
+                        <legend class="significante--total">Número total de atenção relevante: <b>0</b></legend>
+                        <table>
+                            <tr>
+                                <th>Indíce da atenção</th>
+                                <th>Duração</th>
+                                <th>Duração exata (em MS)</th>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </div>
+            </div>
+
+            <div class="resultBoxes">
+                <div class="resultBox">
+                    <fieldset class="fieldset--esq">
+                        <legend>Consequência Social de B-1 - Minuto 1 - B-1</legend>
+                        <legend class="totalAttention_b1">Número total de atenção: <b>0</b></legend>
+                        <legend class="significante--total">Número total de atenção relevante: <b>0</b></legend>
+                        <table>
+                            <tr>
+                                <th>Indíce da atenção</th>
+                                <th>Duração</th>
+                                <th>Duração exata (em MS)</th>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </div>
+
+                <div class="resultBox">
+                    <fieldset class="fieldset--dir">
+                        <legend>Consequência Social de B-1 - Minuto 1 - C-1</legend>
+                        <legend class="totalAttention_c1">Número total de atenção: <b>0</b></legend>
+                        <legend class="significante--total">Número total de atenção relevante: <b>0</b></legend>
+                        <table>
+                            <tr>
+                                <th>Indíce da atenção</th>
+                                <th>Duração</th>
+                                <th>Duração exata (em MS)</th>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </div>
+            </div>
+
+            <div class="resultBoxes">
+                <div class="resultBox">
+                    <fieldset class="fieldset--esq">
+                        <legend>Consequência Social de B-1 - Minuto 2 - B-1</legend>
+                        <legend class="totalAttention_b1">Número total de atenção: <b>0</b></legend>
+                        <table>
+                            <tr>
+                                <th>Indíce da atenção</th>
+                                <th>Duração</th>
+                                <th>Duração exata (em MS)</th>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </div>
+
+                <div class="resultBox">
+                    <fieldset class="fieldset--dir">
+                        <legend>Consequência Social de B-1 - Minuto 2 - C-1</legend>
+                        <legend class="totalAttention_c1">Número total de atenção: <b>0</b></legend>
+                        <table>
+                            <tr>
+                                <th>Indíce da atenção</th>
+                                <th>Duração</th>
+                                <th>Duração exata (em MS)</th>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </div>
+            </div>
+
+            <div class="resultBoxes">
+                <div class="resultBox">
+                    <fieldset class="fieldset--esq">
+                        <legend>Consequência Social de C-1 - Minuto 1 - B-1</legend>
+                        <legend class="totalAttention_b1">Número total de atenção: <b>0</b></legend>
+                        <legend class="significante--total">Número total de atenção relevante: <b>0</b></legend>
+                        <table>
+                            <tr>
+                                <th>Indíce da atenção</th>
+                                <th>Duração</th>
+                                <th>Duração exata (em MS)</th>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </div>
+
+                <div class="resultBox">
+                    <fieldset class="fieldset--dir">
+                        <legend>Consequência Social de C-1 - Minuto 1 - C-1</legend>
+                        <legend class="totalAttention_c1">Número total de atenção: <b>0</b></legend>
+                        <legend class="significante--total">Número total de atenção relevante: <b>0</b></legend>
+                        <table>
+                            <tr>
+                                <th>Indíce da atenção</th>
+                                <th>Duração</th>
+                                <th>Duração exata (em MS)</th>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="resultBoxes">
+                <div class="resultBox">
+                    <fieldset class="fieldset--esq">
+                        <legend>Consequência Social de C-1 - Minuto 2 - B-1</legend>
+                        <legend class="totalAttention_b1">Número total de atenção: <b>0</b></legend>
+                        <legend class="significante--total">Número total de atenção relevante: <b>0</b></legend>
+                        <table>
+                            <tr>
+                                <th>Indíce da atenção</th>
+                                <th>Duração</th>
+                                <th>Duração exata (em MS)</th>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </div>
+
+                <div class="resultBox">
+                    <fieldset class="fieldset--dir">
+                        <legend>Consequência Social de C-1 - Minuto 2 - C-1</legend>
+                        <legend class="totalAttention_c1">Número total de atenção: <b>0</b></legend>
+                        <legend class="significante--total">Número total de atenção relevante: <b>0</b></legend>
+                        <table>
+                            <tr>
+                                <th>Indíce da atenção</th>
+                                <th>Duração</th>
+                                <th>Duração exata (em MS)</th>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="resultBoxes">
+                <div class="resultBox">
+                    <fieldset class="fieldset--esq">
+                        <legend>Consequência Social de B-2 - Minuto 1 - B-1</legend>
+                        <legend class="totalAttention_b1">Número total de atenção: <b>0</b></legend>
+                        <legend class="significante--total">Número total de atenção relevante: <b>0</b></legend>
+                        <table>
+                            <tr>
+                                <th>Indíce da atenção</th>
+                                <th>Duração</th>
+                                <th>Duração exata (em MS)</th>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </div>
+
+                <div class="resultBox">
+                    <fieldset class="fieldset--dir">
+                        <legend>Consequência Social de B-2 - Minuto 1 - C-1</legend>
+                        <legend class="totalAttention_c1">Número total de atenção: <b>0</b></legend>
+                        <legend class="significante--total">Número total de atenção relevante: <b>0</b></legend>
+                        <table>
+                            <tr>
+                                <th>Indíce da atenção</th>
+                                <th>Duração</th>
+                                <th>Duração exata (em MS)</th>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="resultBoxes">
+                <div class="resultBox">
+                    <fieldset class="fieldset--esq">
+                        <legend>Extinção Operante - Minuto 1 - B-1</legend>
+                        <legend class="totalAttention_b1">Número total de atenção: <b>0</b></legend>
+                        <legend class="significante--total">Número total de atenção relevante: <b>0</b></legend>
+                        <table>
+                            <tr>
+                                <th>Indíce da atenção</th>
+                                <th>Duração</th>
+                                <th>Duração exata (em MS)</th>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </div>
+
+                <div class="resultBox">
+                    <fieldset class="fieldset--dir">
+                        <legend>Extinção Operante - Minuto 1 - C-1</legend>
+                        <legend class="totalAttention_c1">Número total de atenção: <b>0</b></legend>
+                        <legend class="significante--total">Número total de atenção relevante: <b>0</b></legend>
+                        <table>
+                            <tr>
+                                <th>Indíce da atenção</th>
+                                <th>Duração</th>
+                                <th>Duração exata (em MS)</th>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </div>
+            </div>
+
+
+            <button onclick="makePDF()">Gerar PDF com os resultados do participante</button>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="hidden">Desenvolvido com amor e cafeína por Hebert</footer>
+
+    </main>
+
+
+    <!-- Scripts -->
+    <script src="./scripts.js"></script>
+    <script>
+        function makePDF() {
+            const element = document.querySelector('.resultado--main');
+            const opt = {
+                margin: [0.5, 0.5, 0.5, 0.5],
+                filename: 'resultado.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+            };
+
+            // Espera até que o conteúdo esteja totalmente renderizado
+            setTimeout(() => {
+                html2pdf().from(element).set(opt).save();
+            }, 1000); // Ajuste o tempo conforme necessário
+        }  
+    </script>
+</body>
+
+</html>
