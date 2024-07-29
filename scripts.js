@@ -105,32 +105,40 @@ function startTimer(minutes, seconds, milliseconds) {
         cronometro.innerHTML = `${min < 10 ? '0' : ''}${min}:${sec < 10 ? '0' : ''}${sec}:<span>${millisec < 100 ? (millisec < 10 ? '00' : '0') : ''}${millisec}</span>`;
 
         // Atualizar a fase conforme o tempo
-        if (min === 7 && sec === 0 && millisec < 10) {
+        if (min === 7 && sec === 0) {
             fase.textContent = "Fase atual: Linha de Base - Minuto 2";
             faseAtual = 'Linha de Base - Minuto 2';
-        } else if (min === 6 && sec === 0 && millisec < 10) {
+
+        } else if (min === 6 && sec === 0) {
             fase.textContent = "Fase atual: Consequência Social de B-1 - Minuto 1";
             faseAtual = 'Consequência Social de B-1 - Minuto 1';
-        } else if (min === 5 && sec === 0 && millisec < 10) {
+
+        } else if (min === 5 && sec === 0) {
             fase.textContent = "Fase atual: Consequência Social de B-1 - Minuto 2";
             faseAtual = 'Consequência Social de B-1 - Minuto 2';
-        } else if (min === 4 && sec === 0 && millisec < 10) {
+
+        } else if (min === 4 && sec === 0) {
             fase.textContent = "Fase atual: Consequência Social de C-1 - Minuto 1";
             faseAtual = 'Consequência Social de C-1 - Minuto 1';
-        } else if (min === 3 && sec === 0 && millisec < 10) {
+
+        } else if (min === 3 && sec === 0) {
             fase.textContent = "Fase atual: Consequência Social de C-1 - Minuto 2";
             faseAtual = 'Consequência Social de C-1 - Minuto 2';
-        } else if (min === 2 && sec === 0 && millisec < 10) {
+
+        } else if (min === 2 && sec === 0) {
             fase.textContent = "Fase atual: Consequência Social de B-2 - Minuto 1";
             faseAtual = 'Consequência Social de B-2 - Minuto 1';
-        } else if (min === 1 && sec === 0 && millisec < 10) {
+
+        } else if (min === 1 && sec === 0) {
             fase.textContent = "Fase atual: Extinção Operante - Minuto 1";
             faseAtual = 'Extinção Operante - Minuto 1';
+
         }
     }
 
     const interval = setInterval(updateTimer, 10); // Atualiza a cada 10 milissegundos
 }
+
 /* Ouve os cliques nos botões e atualiza dados a partir disso */
 function handleAttention() {
     /* Obj de inicialização */
@@ -244,6 +252,7 @@ function lastAttentionData() {
         btnEsq.classList.remove('focus');
 
         attentionData_arr[0].atencaoB1.push([faseAtual, attentionB1_times, b1_stopTime - b1_startTime]);
+        console.log('final esq')
 
 
     }
@@ -254,6 +263,7 @@ function lastAttentionData() {
         btnDir.classList.remove('focus');
 
         attentionData_arr[0].atencaoC1.push([faseAtual, attentionC1_times, c1_stopTime - c1_startTime]);
+        console.log('final dir')
 
 
     }
@@ -342,19 +352,20 @@ function makeTable(id, milliseconds, table) {
 
 /* Filtro para todos os resultados */
 function allResults() {
-    document.querySelectorAll('td').forEach(tdElm => {
-        if (tdElm.classList.contains('hidden')) {
-            tdElm.classList.remove('hidden')
+    document.querySelectorAll('tr').forEach(trElm => {
+        if (trElm.classList.contains('hidden')) {
+            trElm.classList.remove('hidden')
         }
     })
 }
 
 /* Filtro para apenas resultados relevantes */
 function onlyRelevant() {
-    document.querySelectorAll('td').forEach(tdElm => {
-
-        if (tdElm.classList.contains('significante') === false) {
-            tdElm.classList.add('hidden')
+    document.querySelectorAll('tr').forEach(trElm => {
+        if (trElm.children[1].classList.contains('significante') === false) {
+            if (trElm.children[1].tagName.toLowerCase() === 'td') {
+                trElm.classList.add('hidden')
+            }
         }
     })
 }
