@@ -242,6 +242,10 @@ td.significante {
     }
 
     button.direcao{
-        height: 300px;
+        font-size: 24px;
+    }
+
+    .controladores{
+        flex-direction: column;
     }
 }
