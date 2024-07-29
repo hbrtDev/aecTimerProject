@@ -25,6 +25,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
 }
 
 div.container {
@@ -229,4 +230,18 @@ td.significante {
 .dadosGerais{
     margin: 20px;
     line-height: 2.5;
+}
+
+@media (max-width: 800px) {
+    header{
+        padding: 0px 20px;
+    }
+
+    footer{
+        padding: 20px;
+    }
+
+    button.direcao{
+        height: 300px;
+    }
 }

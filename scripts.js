@@ -148,7 +148,7 @@ function handleAttention() {
                 if (attentionData_arr[0].atencaoB1.at(-1)[0] === faseAtual) {
                     attentionB1_times++;
                 } else {
-                    console.log('o menos B1')
+
                     attentionB1_times = 1
                     attentionC1_times = 1
                 }
@@ -166,9 +166,7 @@ function handleAttention() {
 
                 attentionData_arr.pop();
                 attentionData_arr.push(attentionData_obj);
-                console.log(attentionData_arr);
 
-                console.log(faseAtual)
             }
         }
         /* Caso seja c1 */
@@ -179,7 +177,7 @@ function handleAttention() {
                 if (attentionData_arr[0].atencaoC1.at(-1)[0] === faseAtual) {
                     attentionC1_times++;
                 } else {
-                    console.log('resetou c1')
+
                     attentionB1_times = 1
                     attentionC1_times = 1
                 }
@@ -198,7 +196,7 @@ function handleAttention() {
 
                 attentionData_arr.pop();
                 attentionData_arr.push(attentionData_obj);
-                console.log(attentionData_arr);
+
             }
         } else {
             if (e.target.classList.contains('dir--esquerda') === true) {
@@ -211,7 +209,7 @@ function handleAttention() {
 
                 attentionData_arr.pop();
                 attentionData_arr.push(attentionData_obj);
-                console.log(attentionData_arr);
+
             }
             else if (e.target.classList.contains('dir--direita') === true) {
                 e.target.classList.toggle('focus');
@@ -223,7 +221,7 @@ function handleAttention() {
 
                 attentionData_arr.pop();
                 attentionData_arr.push(attentionData_obj);
-                console.log(attentionData_arr);
+
             }
         }
     }
@@ -247,7 +245,7 @@ function lastAttentionData() {
 
         attentionData_arr[0].atencaoB1.push([faseAtual, attentionB1_times, b1_stopTime - b1_startTime]);
 
-        console.log(attentionData_arr);
+
     }
     else if (btnDir.classList.contains('focus') === true) {
         btnDir.classList.toggle('focus');
@@ -257,7 +255,7 @@ function lastAttentionData() {
 
         attentionData_arr[0].atencaoC1.push([faseAtual, attentionC1_times, c1_stopTime - c1_startTime]);
 
-        console.log(attentionData_arr);
+
     }
 }
 
@@ -319,7 +317,6 @@ function showResults() {
 /* Faz a tabela com os resultados */
 function makeTable(id, milliseconds, table) {
     let trElement = document.createElement('tr')
-    let significante = 0 /* Conta os significantes */
 
     for (let i = 0; i < 3; i++) {
         let tdElement = document.createElement('td')
@@ -331,8 +328,6 @@ function makeTable(id, milliseconds, table) {
             tdElement.textContent = `${seconds} segundos`;
             if (seconds > 2) {
                 tdElement.setAttribute('class', 'significante');
-                significante++
-                console.log(table.parentElement)
             }
         }
         else {
@@ -348,7 +343,6 @@ function makeTable(id, milliseconds, table) {
 /* Filtro para todos os resultados */
 function allResults() {
     document.querySelectorAll('td').forEach(tdElm => {
-        console.log(tdElm)
         if (tdElm.classList.contains('hidden')) {
             tdElm.classList.remove('hidden')
         }
@@ -360,7 +354,6 @@ function onlyRelevant() {
     document.querySelectorAll('td').forEach(tdElm => {
 
         if (tdElm.classList.contains('significante') === false) {
-            console.log('na condic')
             tdElm.classList.add('hidden')
         }
     })
@@ -387,6 +380,12 @@ function caculateTotal() {
 function calculateRelevant() {
     let totalB1 = 0
     let totalC1 = 0
+
+    document.querySelectorAll('fieldset').forEach(fieldset => {
+        if (fieldset.querySelector('.significante--total') !== null) {
+            fieldset.querySelector('.significante--total > b').textContent = fieldset.querySelectorAll('.significante').length
+        }
+    })
 
     document.querySelectorAll('.fieldset--esq > .significante--total > b').forEach(b1Total => {
         totalB1 += parseInt(b1Total.textContent)
