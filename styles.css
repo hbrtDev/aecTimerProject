@@ -184,7 +184,7 @@ button.direcao:active {
     text-align: center;
 }
 
-.resultado--main h2{
+.resultado--main h2 {
     margin-top: 40px;
 }
 
@@ -215,7 +215,8 @@ tr:nth-child(even) {
     color: #fff;
 }
 
-td, th{
+td,
+th {
     padding: 20px;
 }
 
@@ -223,29 +224,63 @@ td.significante {
     color: #D0342C;
 }
 
-.filtros>button{
+.filtros>button {
     margin: 20px;
 }
 
-.dadosGerais{
+.dadosGerais {
     margin: 20px;
     line-height: 2.5;
 }
 
 @media (max-width: 800px) {
-    header{
+    header {
         padding: 0px 20px;
     }
 
-    footer{
+    footer {
         padding: 20px;
     }
 
-    button.direcao{
+    button.direcao {
         font-size: 24px;
     }
 
-    .controladores{
+    .controladores {
         flex-direction: column;
     }
 }
+
+@media print {
+    body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .resultBox,
+    .dadosGerais,
+    fieldset {
+        page-break-inside: avoid;
+        display: inline-block;
+        overflow: hidden;
+    }
+
+    .resultBox {
+        page-break-before: always;
+    }
+}
+
+.resultBox,
+.dadosGerais,
+fieldset {
+    page-break-inside: avoid;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.dadosGerais,
+.resultBox {
+    width: 100%;
+}
+
+

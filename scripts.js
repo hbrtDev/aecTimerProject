@@ -156,7 +156,6 @@ function handleAttention() {
                 if (attentionData_arr[0].atencaoB1.at(-1)[0] === faseAtual) {
                     attentionB1_times++;
                 } else {
-
                     attentionB1_times = 1
                     attentionC1_times = 1
                 }
@@ -174,7 +173,6 @@ function handleAttention() {
 
                 attentionData_arr.pop();
                 attentionData_arr.push(attentionData_obj);
-
             }
         }
         /* Caso seja c1 */
@@ -185,7 +183,6 @@ function handleAttention() {
                 if (attentionData_arr[0].atencaoC1.at(-1)[0] === faseAtual) {
                     attentionC1_times++;
                 } else {
-
                     attentionB1_times = 1
                     attentionC1_times = 1
                 }
@@ -200,7 +197,6 @@ function handleAttention() {
                 document.querySelector('.dir--esquerda').classList.remove('focus');
                 attentionB1_dataToObj.push([faseAtual, attentionB1_times, b1_stopTime - b1_startTime]);
                 attentionData_obj.atencaoB1 = attentionB1_dataToObj;
-
 
                 attentionData_arr.pop();
                 attentionData_arr.push(attentionData_obj);
@@ -217,7 +213,6 @@ function handleAttention() {
 
                 attentionData_arr.pop();
                 attentionData_arr.push(attentionData_obj);
-
             }
             else if (e.target.classList.contains('dir--direita') === true) {
                 e.target.classList.toggle('focus');
@@ -229,7 +224,6 @@ function handleAttention() {
 
                 attentionData_arr.pop();
                 attentionData_arr.push(attentionData_obj);
-
             }
         }
     }
@@ -237,7 +231,6 @@ function handleAttention() {
     document.querySelectorAll('.direcao').forEach(btn => {
         btn.addEventListener('click', handleButtonClick)
     })
-
 }
 
 function lastAttentionData() {
@@ -253,8 +246,6 @@ function lastAttentionData() {
 
         attentionData_arr[0].atencaoB1.push([faseAtual, attentionB1_times, b1_stopTime - b1_startTime]);
         console.log('final esq')
-
-
     }
     else if (btnDir.classList.contains('focus') === true) {
         btnDir.classList.toggle('focus');
@@ -264,8 +255,6 @@ function lastAttentionData() {
 
         attentionData_arr[0].atencaoC1.push([faseAtual, attentionC1_times, c1_stopTime - c1_startTime]);
         console.log('final dir')
-
-
     }
 }
 
@@ -320,6 +309,7 @@ function showResults() {
         })
     })
 
+    calculateAttention()
     caculateTotal()
     calculateRelevant()
 }
@@ -336,8 +326,9 @@ function makeTable(id, milliseconds, table) {
         } else if (i === 1) {
             const seconds = (milliseconds / 1000).toFixed(1);
             tdElement.textContent = `${seconds} segundos`;
+            tdElement.classList.add('celula--tempo')
             if (seconds > 2) {
-                tdElement.setAttribute('class', 'significante');
+                tdElement.classList.add('significante');
             }
         }
         else {
@@ -367,6 +358,32 @@ function onlyRelevant() {
                 trElm.classList.add('hidden')
             }
         }
+    })
+}
+
+/* Calcula o total de atenção dada por etapa */
+function calculateAttention() {
+    let totalTime = 0
+
+    document.querySelectorAll('.tempo--total').forEach(timeElm => {
+        timeElm.parentElement.querySelectorAll('.celula--tempo').forEach(timeCel => {
+            totalTime += parseFloat(timeCel.textContent.split('segundos')[0].trim())
+
+            timeElm.querySelector('b').textContent = `${totalTime.toFixed(1)} segundos`
+        })
+
+        totalTime = 0
+    })
+
+    /* Logo após descobrir o total de atenção, calculamos o total de não-atenção */
+    calculateDodge()
+}
+
+/* Calcula o total de atenção não dada (esquiva) por etapa */
+function calculateDodge() {
+    document.querySelectorAll('.esquiva--total').forEach(dodgeElm => {
+        let attValue = parseFloat(dodgeElm.parentElement.querySelector('.tempo--total > b').textContent.split('segundos')[0].trim())
+        dodgeElm.querySelector('b').textContent = `${60 - attValue} segundos`
     })
 }
 
