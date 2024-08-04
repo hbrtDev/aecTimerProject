@@ -383,7 +383,7 @@ function calculateAttention() {
 function calculateDodge() {
     document.querySelectorAll('.esquiva--total').forEach(dodgeElm => {
         let attValue = parseFloat(dodgeElm.parentElement.querySelector('.tempo--total > b').textContent.split('segundos')[0].trim())
-        dodgeElm.querySelector('b').textContent = `${60 - attValue} segundos`
+        dodgeElm.querySelector('b').textContent = `${(60 - attValue).toFixed(1)} segundos`
     })
 }
 
