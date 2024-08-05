@@ -25,17 +25,8 @@
                 <label for="input" class="participante--label">Nome do Participante:</label>
                 <input type="text" class="participante--input" placeholder="Insira o nome do participante aqui">
 
-                <label for="select" class="avaliador--label">Avaliador(a)</label>
-                <select class="avaliador--select">
-                    <option value="0">Escolhar um Avaliador</option>
-                    <option value="1">BEATRIZ DOMBROSKI BENFATTI GONZALEZ</option>
-                    <option value="2">GIOVANA SANTOS LIMA</option>
-                    <option value="3">GIOVANA SILVA E OLIVEIRA</option>
-                    <option value="4">HEBERT DOS SANTOS ALMEIDA</option>
-                    <option value="5">LETÍCIA MENDONÇA FIGUEIREDO</option>
-                    <option value="6">NILTON CASSEMIRO DE SOUZA JUNIOR</option>
-                    <option value="7">REBECA DO NASCIMENTO MENOSSI</option>
-                </select>
+                <label class="avaliador--label">Avaliador(a)</label>
+                <input type="text" class="avaliador--input" placeholder="Insira o nome do(a) avaliador(a) aqui">
 
                 <button class="toTest_btn">Ir para controle de Testagem</button>
             </div>
@@ -376,12 +367,18 @@
     <script>
         function makePDF() {
             const element = document.querySelector('.resultado--main');
+            let participante = document.querySelector('.participante--span > b').textContent.trim()
+            let avaliador = document.querySelector('.avaliador--span > b').textContent.trim()
+
+            let data = new Date()
+            let dataString = `${data.getDate() > 9 ? data.getDate() : '0' + data.getDate()}-${data.getMonth() + 1 > 9 ? data.getMonth() + 1 : '0' + (data.getMonth() + 1)}`
+
             element.querySelectorAll('button').forEach(btn => {
                 btn.classList.toggle('hidden')
             })
             const opt = {
                 margin: 0.5,
-                filename: 'resultados_participante.pdf',
+                filename: `resultado_${participante}_por_${avaliador}_em_${dataString}`,
                 image: { type: 'jpeg', quality: 0.98 },
                 html2canvas: { scale: 2, logging: true, scrollX: 0, scrollY: 0, useCORS: true },
                 jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }

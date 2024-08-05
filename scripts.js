@@ -2,10 +2,8 @@
 let attentionData_arr = []
 let haveListeners = 0
 let faseAtual = 'Linha de Base - Minuto 1'
-let participante = 'Placeholder participante'
-let avaliadorElm = ''
-let avaliadorValue = ''
-let avaliadorName = 'Placeholder avaliador'
+let participante = 'Placeholder'
+let avaliadorName = 'Placeholder'
 /* Globais de atenção */
 let attentionB1_times = 0
 let attentionC1_times = 0
@@ -36,8 +34,8 @@ document.querySelector('.toTest_btn').addEventListener('click', (e) => {
 
     reloadNamesData()
 
-    if (avaliadorValue === '0') {
-        window.alert('Por favor, insira um nome de avaliador válido!')
+    if (avaliadorName === 'Placeholder' || participante === 'Placeholder') {
+        window.alert('Por favor, confira se todos os campos foram preenchidos.')
     } else {
         /* Carrega a Tela de testagem */
         telaTestagem.classList.remove('hidden')
@@ -56,9 +54,7 @@ document.querySelector('.toTest_btn').addEventListener('click', (e) => {
 /* Atualiza o campos com os nomes importantes para o nomes corretos */
 function reloadNamesData() {
     participante = document.querySelector('input.participante--input').value.trim()
-    avaliadorElm = document.querySelector('select.avaliador--select')
-    avaliadorValue = avaliadorElm.value
-    avaliadorName = avaliadorElm.children[avaliadorElm.selectedIndex].textContent.trim()
+    avaliadorName = document.querySelector('input.avaliador--input').value.trim()
 }
 
 /* Função que atualiza o header com informações do cadastro */
