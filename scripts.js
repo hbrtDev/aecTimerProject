@@ -252,6 +252,9 @@ function lastAttentionData() {
         attentionData_arr[0].atencaoC1.push([faseAtual, attentionC1_times, c1_stopTime - c1_startTime]);
         console.log('final dir')
     }
+
+    btnEsq.disabled = true
+    btnDir.disabled = true
 }
 
 /* Mostra os resultados na tela de resultados */
@@ -377,9 +380,17 @@ function calculateAttention() {
 
 /* Calcula o total de atenção não dada (esquiva) por etapa */
 function calculateDodge() {
-    document.querySelectorAll('.esquiva--total').forEach(dodgeElm => {
-        let attValue = parseFloat(dodgeElm.parentElement.querySelector('.tempo--total > b').textContent.split('segundos')[0].trim())
-        dodgeElm.querySelector('b').textContent = `${(60 - attValue).toFixed(1)} segundos`
+    let dodgeValue = 0
+
+    document.querySelectorAll('.geral--phase--data').forEach(dodgeElm => {
+        let dodgeParentElm = dodgeElm.parentElement
+        dodgeParentElm.querySelectorAll('.tempo--total > b').forEach(valueElm => {
+            let value = parseFloat(valueElm.textContent.split('segundos')[0].trim())
+            dodgeValue+=value
+        })
+
+        dodgeElm.querySelector('p > b').textContent = `${(60 - dodgeValue).toFixed(1)} segundos`
+        dodgeValue = 0
     })
 }
 

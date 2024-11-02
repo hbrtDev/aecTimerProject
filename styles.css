@@ -219,9 +219,6 @@ td.significante {
     line-height: 2.5;
 }
 
-.esquiva--total{
-display: none}
-
 @media (max-width: 800px) {
     header {
         padding: 0px 20px;
